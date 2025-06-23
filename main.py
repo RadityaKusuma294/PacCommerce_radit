@@ -27,14 +27,15 @@ class PacCommerce:
     def predict_membership (self):
         r_square_list = []
         for mytier in self.tier_req:
-            r_square_suku_1 = (self.monthly_expense - mytier["Monthly Expense"])**2
+            r_square_suku_1 = (self.monthly_expense - mytier["Monthly Expense"])**2 
             r_square_suku_2 = (self.monthly_income - mytier["Monthly Income"])**2
             r_square = (r_square_suku_1 + r_square_suku_2)**(1/2)
-            r_square_list.append(r_square)
+            r_square_list.append(r_square) # buat list agar dapat dicari elemen yang minimal dengan min()
         
-        acuan_nilai_terdekat = min(r_square_list)
-        index_r_square_terkecil = r_square_list.index(acuan_nilai_terdekat)
-        self.tier_user = self.tier_benefits[index_r_square_terkecil]["Membership"]
+        acuan_nilai_terdekat = min(r_square_list) # cari paling minimal dari list
+        index_r_square_terkecil = r_square_list.index(acuan_nilai_terdekat) # cari posisi/Index elemen yang paling kecil di list r_square_list dengan index()
+        self.tier_user = self.tier_benefits[index_r_square_terkecil]["Membership"] # cari tier membership mana yang r_square-nya paling kecil
+       #self.tier_user = list tabel benefit[index list][nama key dari gold, platinum, silver --> "Membership"]
         return f"\nanda tergolong kategori membership {self.tier_user}"
     
     def calculate_price (self, list_harga_barang, membership):
