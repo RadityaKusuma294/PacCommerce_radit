@@ -35,7 +35,7 @@ class PacCommerce:
         acuan_nilai_terdekat = min(r_square_list) # cari paling minimal dari list
         index_r_square_terkecil = r_square_list.index(acuan_nilai_terdekat) # cari posisi/Index elemen yang paling kecil di list r_square_list dengan index()
         self.tier_user = self.tier_benefits[index_r_square_terkecil]["Membership"] # cari tier membership mana yang r_square-nya paling kecil
-       #self.tier_user = list tabel benefit[index list][nama key dari gold, platinum, silver --> "Membership"]
+       #self.tier_user = list tabel benefit[index list hasil perhitungan r_square][nama key dari gold, platinum, silver --> "Membership"]
         return f"\nanda tergolong kategori membership {self.tier_user}"
     
     def calculate_price (self, list_harga_barang, membership):
